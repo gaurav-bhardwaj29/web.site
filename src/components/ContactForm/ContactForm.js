@@ -153,6 +153,10 @@ const ContactForm = () => {
       
       const data = await response.json();
       
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+      
       if (data.success) {
         setShowConfirmation(true);
         setFormData({
@@ -161,11 +165,11 @@ const ContactForm = () => {
           message: ''
         });
       } else {
-        setFormError('There was an error sending your message. Please try again.');
+        throw new Error(data.message || 'Failed to send message');
       }
     } catch (error) {
       console.error('Error:', error);
-      setFormError('Network error. Please check your connection and try again.');
+      setFormError(error.message || 'Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
