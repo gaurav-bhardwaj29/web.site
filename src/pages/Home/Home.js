@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Preloader from '../../components/Preloader/PreLoader';
 import Navigation from '../../components/Navigation/Navigation';
-import DiffusionText from '../../animations/textEffects';
+import RevealText from '../../animations/textEffects';
+import InteractiveScene from '../../components/HeadModel/InteractiveScene';
 import ProjectCard from '../../components/ProjectCard/ProjectCard';
 import SkillsMatrix from '../../components/SkillsMatrix/SkillsMatrix';
 import ContactForm from '../../components/ContactForm/ContactForm';
@@ -13,16 +14,26 @@ const HomeContainer = styled.div`
 `;
 
 const HeroSection = styled.section`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2rem;
+  flex-direction: column;
+  padding: 2rem;
 `;
-
+const NameHeader = styled.h1`
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-top: 6rem;
+  position: relative;
+  z-index: 5;
+`;
 const IntroText = styled.div`
   max-width: 800px;
   text-align: center;
+  margin: 0 auto 2rem;
+  padding-top: 5rem;
 `;
 
 const Section = styled.section`
@@ -58,16 +69,53 @@ const ProjectsContainer = styled.div`
     flex-direction: column;
   }
 `;
+const ResumeSection = styled(motion.section)`
+  text-align: center;
+  padding: 4rem 0;
+  margin: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+`;
+
+const ResumeButton = styled(motion.a)`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: var(--accent);
+    color: var(--background);
+  }
+`;
+
+
+
+
+
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-  
+  const isFirstVisit = !sessionStorage.getItem('visited');
   const finishLoading = () => {
     setLoading(false);
   };
+  useEffect(() => {
+    if (isFirstVisit) {
+      sessionStorage.setItem('visited', 'true');
+    } else {
+      // Skip preloader if not first visit
+      setLoading(false);
+    }
+  }, [isFirstVisit]);
   
   const introText = "AI Engineer — Collaboration fuels my process, innovation drives my vision, and iteration ensures every detail evolves to perfection. I develop data-driven solutions, automate workflows, and extract insights from diverse data.";
-  
   const projects = [
     {
       title: "Sentiment Analyzer",
@@ -89,7 +137,7 @@ const Home = () => {
     }
   ];
   
-  if (loading) {
+  if (loading && isFirstVisit) {
     return <Preloader finishLoading={finishLoading} />;
   }
   
@@ -98,9 +146,8 @@ const Home = () => {
       <Navigation />
       
       <HeroSection>
-        <IntroText>
-          <DiffusionText text={introText} fontSize="1.5rem" delay={0.5} />
-        </IntroText>
+      <NameHeader>Gaurav Bhardwaj</NameHeader>
+        <InteractiveScene />
       </HeroSection>
       
       <Section as={motion.section}
@@ -108,18 +155,18 @@ const Home = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <SectionTitle>Featured Projects</SectionTitle>
+        <SectionTitle>My Work</SectionTitle>
         <ProjectsContainer>
-          {projects.map((project, index) => (
-            <ProjectCard 
-              key={index}
-              title={project.title}
-              description={project.description}
-              technologies={project.technologies}
-              link={project.link}
-              delay={index * 0.2}
-            />
-          ))}
+        {projects.slice(0, 3).map((project, index) => (
+    <ProjectCard 
+      key={index}
+      title={project.title}
+      description={project.description}
+      technologies={project.technologies}
+      link={project.link}
+      delay={index * 0.2}
+    />
+  ))}
         </ProjectsContainer>
       </Section>
       
@@ -131,6 +178,21 @@ const Home = () => {
         <SectionTitle>Skills Matrix</SectionTitle>
         <SkillsMatrix />
       </Section>
+      
+      <ResumeSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.7 }}
+      >
+        <ResumeButton 
+          href="/resume.pdf" 
+          target="_blank"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+    <i className="fas fa-file-alt"></i> View My Resume
+  </ResumeButton>
+</ResumeSection>
       
       <Section as={motion.section}
         initial={{ opacity: 0 }}

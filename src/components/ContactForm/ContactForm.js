@@ -5,6 +5,9 @@ import { motion } from 'framer-motion';
 const FormContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const Form = styled.form`
@@ -37,6 +40,10 @@ const Input = styled.input`
     outline: none;
     border-color: var(--accent);
   }
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const TextArea = styled.textarea`
@@ -53,6 +60,11 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
     border-color: var(--accent);
+  }
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+    min-height: 120px;
   }
 `;
 

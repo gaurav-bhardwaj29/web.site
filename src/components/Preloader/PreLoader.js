@@ -33,12 +33,13 @@ const Preloader = ({ finishLoading }) => {
     const text = textRef.current;
     let currentIndex = 0;
     
-    // Text scramble effect
+    // Text scramble effect - faster version
     const scrambleText = () => {
-      let chars = "!<>-_\\/[]{}—=+*^?#________";
+      const chars = "!<>-_\\/[]{}—=+*^?#________";
       let iteration = 0;
-      let finalText = greetings[currentIndex];
-      let duration = finalText.length > 5 ? 20 : 30;
+      const finalText = greetings[currentIndex];
+      // Shorter duration
+      const duration = 10; 
       
       const interval = setInterval(() => {
         text.innerText = finalText
@@ -54,25 +55,25 @@ const Preloader = ({ finishLoading }) => {
         if(iteration >= finalText.length) { 
           clearInterval(interval);
           
-          // Move to next greeting
+          // Move to next greeting - faster transitions
           setTimeout(() => {
             currentIndex = (currentIndex + 1) % greetings.length;
             if (currentIndex === 0 && iteration >= finalText.length) {
               gsap.to(text, {
                 opacity: 0,
-                duration: 1,
+                duration: 0.3,
                 onComplete: () => {
-                  setTimeout(finishLoading, 500);
+                  setTimeout(finishLoading, 100);
                 }
               });
             } else {
               iteration = 0;
               scrambleText();
             }
-          }, 800);
+          }, 200); // Shorter pause between greetings
         }
         
-        iteration += 1/3;
+        iteration += 1/2; // Faster iteration
       }, duration);
     };
     
@@ -81,13 +82,12 @@ const Preloader = ({ finishLoading }) => {
       { opacity: 0 },
       { 
         opacity: 1, 
-        duration: 1,
+        duration: 0.3,
         onComplete: scrambleText
       }
     );
     
     return () => {
-      // Clean up animations
       gsap.killTweensOf(text);
     };
   }, [finishLoading]);

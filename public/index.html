@@ -1,9 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      #global-preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #121212;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+      
+      #global-preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+      
+      .loader-spinner {
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-top: 3px solid #3C91E6;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+    
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    
+      .loader-text {
+        font-family: 'IBM Plex Mono', monospace;
+        color: #AAAAAA;
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+    </style>
+    
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -15,6 +59,10 @@
     <title>Gaurav Bhardwaj | AI Engineer</title>
   </head>
   <body>
+    <div id="global-preloader">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">LOADING</div>
+    </div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -27,5 +75,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      window.addEventListener('load', function() {
+        // Hide preloader after page is fully loaded
+        setTimeout(function() {
+          const preloader = document.getElementById('global-preloader');
+          if (preloader) {
+            preloader.classList.add('hidden');
+            setTimeout(() => {
+              preloader.style.display = 'none';
+            }, 500);
+          }
+        }, 500);
+      });
+    </script>
   </body>
 </html>

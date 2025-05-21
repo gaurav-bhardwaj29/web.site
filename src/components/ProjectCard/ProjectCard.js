@@ -15,6 +15,9 @@ const Card = styled(motion.div)`
   &:hover {
     transform: translateY(-10px);
   }
+  @media (max-width: 768px) {
+    padding: 1.2rem;
+  }
 `;
 
 const ProjectTitle = styled.h3`

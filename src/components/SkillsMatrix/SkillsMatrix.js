@@ -5,84 +5,88 @@ import { motion } from 'framer-motion';
 const MatrixContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 `;
 
-const SkillCategory = styled.div`
-  margin-bottom: 2rem;
+const SkillCategory = styled(motion.div)`
+  background: rgba(60, 145, 230, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(60, 145, 230, 0.3);
+  }
 `;
 
 const CategoryTitle = styled.h3`
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: var(--accent);
-`;
-
-const SkillItem = styled(motion.div)`
-  margin-bottom: 1rem;
-`;
-
-const SkillName = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
+  position: relative;
   
-  span {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
   }
 `;
 
-const ProgressBar = styled.div`
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-  overflow: hidden;
+const SkillsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
 `;
 
-const Progress = styled(motion.div)`
-  height: 100%;
-  background: var(--accent);
-  border-radius: 3px;
+const SkillBadge = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 0.8rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(60, 145, 230, 0.2);
+  }
+`;
+
+const SkillName = styled.div`
+  font-size: 0.9rem;
+  color: var(--text-secondary);
 `;
 
 const skillsData = [
   {
     category: "Programming Languages",
-    skills: [
-      { name: "Python", level: 95 },
-      { name: "C++", level: 80 },
-      { name: "Swift", level: 70 },
-      { name: "Bash", level: 75 }
-    ]
+    skills: ["Python", "C++", "Swift", "Bash"]
   },
   {
     category: "AI/ML Frameworks",
-    skills: [
-      { name: "PyTorch", level: 90 },
-      { name: "Scikit-Learn", level: 85 },
-      { name: "LangChain", level: 80 },
-      { name: "TensorFlow", level: 75 }
-    ]
+    skills: ["PyTorch", "Scikit-Learn", "LangChain", "TensorFlow"]
   },
   {
     category: "Tools & Platforms",
-    skills: [
-      { name: "AWS", level: 85 },
-      { name: "GCP", level: 80 },
-      { name: "Docker", level: 90 },
-      { name: "Airflow", level: 75 },
-      { name: "MongoDB", level: 70 }
-    ]
+    skills: ["AWS", "GCP", "Docker", "Airflow", "MongoDB"]
   },
   {
     category: "Others",
-    skills: [
-      { name: "Terraform", level: 75 },
-      { name: "Tableau", level: 70 },
-      { name: "Git", level: 90 },
-      { name: "Agile Methodologies", level: 85 }
-    ]
+    skills: ["Terraform", "Tableau", "Git", "Agile Methodologies"]
   }
 ];
 
@@ -90,28 +94,26 @@ const SkillsMatrix = () => {
   return (
     <MatrixContainer>
       {skillsData.map((category, categoryIndex) => (
-        <SkillCategory key={categoryIndex}>
+        <SkillCategory 
+          key={categoryIndex}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+        >
           <CategoryTitle>{category.category}</CategoryTitle>
-          {category.skills.map((skill, skillIndex) => (
-            <SkillItem 
-              key={skillIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-            >
-              <SkillName>
-                <span>{skill.name}</span>
-                <span>{skill.level}%</span>
-              </SkillName>
-              <ProgressBar>
-                <Progress 
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: categoryIndex * 0.1 + skillIndex * 0.05 + 0.3 }}
-                />
-              </ProgressBar>
-            </SkillItem>
-          ))}
+          <SkillsGrid>
+            {category.skills.map((skill, skillIndex) => (
+              <SkillBadge 
+                key={skillIndex}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
+                whileHover={{ y: -5 }}
+              >
+                <SkillName>{skill}</SkillName>
+              </SkillBadge>
+            ))}
+          </SkillsGrid>
         </SkillCategory>
       ))}
     </MatrixContainer>
