@@ -10,19 +10,19 @@ app.use(express.json());
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
   
-  // Create a transporter
+  // Create a nodemailer transporter
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL,
-      pass: process.env.EMAIL_PASSWORD,
+      pass: process.env.EMAIL_PASSWORD, // Use an App Password for Gmail
     },
   });
   
   // Email options
   const mailOptions = {
     from: process.env.EMAIL,
-    to: 'your-email@gmail.com', // Where you want to receive messages
+    to: process.env.EMAIL, // Send to yourself
     subject: `Portfolio Contact from ${name}`,
     text: `
       Name: ${name}

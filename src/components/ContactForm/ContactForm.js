@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion , AnimatePresence } from 'framer-motion';
 
 const FormContainer = styled.div`
   max-width: 600px;
@@ -84,8 +84,34 @@ const SubmitButton = styled(motion.button)`
     background: var(--accent);
     color: var(--background);
   }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
 
+const ConfirmationPopup = styled(motion.div)`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 400px;
+  text-align: center;
+  z-index: 1000;
+`;
+const Overlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+`;
 const SuccessMessage = styled(motion.div)`
   color: #4BB543;
   margin-top: 1rem;
@@ -101,8 +127,9 @@ const ContactForm = () => {
     message: ''
   });
   
-  const [submitted, setSubmitted] = useState(false);
-  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [formError, setFormError] = useState(null);
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -112,9 +139,11 @@ const ContactForm = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setFormError(null);
     
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('YOUR_BACKEND_URL/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -125,17 +154,24 @@ const ContactForm = () => {
       const data = await response.json();
       
       if (data.success) {
-        setSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
-        
-        setTimeout(() => {
-          setSubmitted(false);
-        }, 5000);
+        setShowConfirmation(true);
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+      } else {
+        setFormError('There was an error sending your message. Please try again.');
       }
     } catch (error) {
       console.error('Error:', error);
+      setFormError('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
+        
+  
   
   return (
     <FormContainer>
@@ -174,25 +210,39 @@ const ContactForm = () => {
             required 
           />
         </InputGroup>
+        {formError && <p style={{ color: 'tomato' }}>{formError}</p>}
         
         <SubmitButton 
           type="submit"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          disabled={isSubmitting}
         >
-          Send Message
+          {isSubmitting ? 'Sending...' : 'Send Message'}
         </SubmitButton>
       </Form>
       
-      {submitted && (
-        <SuccessMessage
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-        >
-          Thank you for your message! I'll get back to you soon.
-        </SuccessMessage>
-      )}
+      <AnimatePresence>
+        {showConfirmation && (
+          <>
+            <Overlay 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowConfirmation(false)}
+            />
+            <ConfirmationPopup
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+            >
+              <h3>Message Sent!</h3>
+              <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+              <button onClick={() => setShowConfirmation(false)}>Close</button>
+            </ConfirmationPopup>
+          </>
+        )}
+      </AnimatePresence>
     </FormContainer>
   );
 };
