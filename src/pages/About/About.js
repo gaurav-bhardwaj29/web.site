@@ -173,7 +173,7 @@ const About = () => {
         >
           <SectionTitle>About Me</SectionTitle>
           <PixelatedImage 
-            src="/path-to-your-image.jpg" 
+            src="/images/profile.jpg" 
             alt="Gaurav Bhardwaj" 
           />
           <DiffusionText
