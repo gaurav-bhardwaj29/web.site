@@ -121,10 +121,11 @@ const Blog = () => {
     },
     {
       id: 3,
-      title: "Deep Learning vs. Traditional Machine Learning: When to Use Each",
-      excerpt: "Comparing the strengths and weaknesses of deep learning and traditional ML approaches to help you choose the right tool for your project.",
-      date: "Coming Soon",
-      color: "hsla(330, 70%, 30%, 0.2)"
+      title: "Socket Programming",
+      excerpt: "A Beginner’s Guide to Building Real-Time Connections",
+      date: "May 22, 2025",
+      color: "hsla(330, 70%, 30%, 0.2)",
+      mediumlink: "https://medium.com/@gaurav290802/socket-programming-101-cdfd343f3028"
     }
   ];
 
@@ -133,7 +134,6 @@ const Blog = () => {
       <Navigation />
       <BlogContainer>
         <SectionTitle>Blog</SectionTitle>
-        
         <BlogPostsContainer>
           {blogPosts.map((post, index) => (
             <BlogPost 
@@ -143,27 +143,29 @@ const Blog = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <BlogImage color={post.color}>
-                <i className="fas fa-feather-alt"></i>
+                <i className="fas fa-newspaper"></i>
               </BlogImage>
               <BlogContent>
                 <BlogDate>{post.date}</BlogDate>
                 <BlogTitle>{post.title}</BlogTitle>
                 <BlogExcerpt>{post.excerpt}</BlogExcerpt>
-                <ReadMoreLink>Read More →</ReadMoreLink>
+                {/* Make this a real link to Medium */}
+                <ReadMoreLink 
+                  href={post.mediumLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  Read More →
+                </ReadMoreLink>
               </BlogContent>
             </BlogPost>
           ))}
         </BlogPostsContainer>
         
-        <ComingSoon
-          as={motion.div}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
+        <ComingSoon>
           <h3>More Content Coming Soon</h3>
           <p>
-            I'm currently working on insightful articles about AI engineering, machine learning best practices, and tech industry trends. 
+            I'm currently working on insightful articles about AI engineering, machine learning best practices, and tech industry trends.
             Check back soon for new content!
           </p>
         </ComingSoon>
