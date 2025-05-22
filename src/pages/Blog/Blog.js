@@ -125,7 +125,7 @@ const Blog = () => {
       excerpt: "A Beginner’s Guide to Building Real-Time Connections",
       date: "May 22, 2025",
       color: "hsla(330, 70%, 30%, 0.2)",
-      mediumlink: "https://medium.com/@gaurav290802/socket-programming-101-cdfd343f3028"
+      mediumLink: "https://medium.com/@gaurav290802/socket-programming-101-cdfd343f3028"
     }
   ];
 

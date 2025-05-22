@@ -173,7 +173,7 @@ const Navigation = () => {
         <IconLink href="https://kaggle.com/gauravbhradwaj" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-kaggle"></i>
         </IconLink>
-        <IconLink href="#" target="_blank" rel="noopener noreferrer">
+        <IconLink href="https://x.com/bardgaurav" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-twitter"></i>
         </IconLink>
         <IconLink href="#" target="_blank" rel="noopener noreferrer">
