@@ -74,19 +74,19 @@ const SkillName = styled.div`
 const skillsData = [
   {
     category: "Programming Languages",
-    skills: ["Python", "C++", "Swift", "Bash"]
+    skills: ["Python", "C/C++", "Swift", "bash"]
   },
   {
     category: "AI/ML Frameworks",
-    skills: ["PyTorch", "Scikit-Learn", "LangChain", "TensorFlow"]
+    skills: ["PyTorch", "Scikit-Learn", "Keras", "LangChain", "Crew"]
   },
   {
     category: "Tools & Platforms",
-    skills: ["AWS", "GCP", "Docker", "Airflow", "MongoDB"]
+    skills: ["AWS", "GCP", "Airflow", "SageMaker", "Docker"]
   },
   {
     category: "Others",
-    skills: ["Terraform", "Tableau", "Git", "Agile Methodologies"]
+    skills: ["Kafka", "Spark", "Flink", "Terraform", "Git"]
   }
 ];
 
