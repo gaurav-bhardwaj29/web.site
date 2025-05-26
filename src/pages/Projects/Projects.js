@@ -146,27 +146,54 @@ const projects = [
     liveLink: "#",
     category: "Automation"
   },
+  // {
+  //   id: 4,
+  //   title: "Data Visualization Dashboard",
+  //   description: "Interactive dashboard for analyzing customer behavior patterns across multiple channels.",
+  //   technologies: ["Tableau", "SQL", "Data Analysis", "BI"],
+  //   githubLink: "#",
+  //   liveLink: "#",
+  //   category: "Data"
+  // },
   {
     id: 4,
-    title: "Data Visualization Dashboard",
-    description: "Interactive dashboard for analyzing customer behavior patterns across multiple channels.",
-    technologies: ["Tableau", "SQL", "Data Analysis", "BI"],
-    githubLink: "#",
-    liveLink: "#",
-    category: "Data"
-  },
-  {
-    id: 5,
     title: "Automated ML Pipeline",
     description: "End-to-end ML pipeline for continuous model training, evaluation, and deployment.",
     technologies: ["Airflow", "Docker", "AWS", "Python", "MLOps"],
     githubLink: "#",
     liveLink: "#",
-    category: "DevOps"
+    category: "Automation"
+  },
+  {
+    id: 5,
+    title: "Gitpuller",
+    description: "A web dashboard that provides live GitHub repository statistics, charts, and data export features for any public or private repository.",
+    technologies: ["Flask", "Docker", "GCP"],
+    githubLink: "https://github.com/gaurav-bhardwaj29/gitpuller",
+    liveLink: "https://github-stats-dashboard-165889667051.asia-south1.run.app",
+    category: "Automation"
+  },
+  {
+    id: 6,
+    title: "Shell-by",
+    description: "A POSIX-compliant shell",
+    technologies: ["C"],
+    githubLink: "https://github.com/gaurav-bhardwaj29/shell-by",
+    liveLink: "#",
+    category: "Low-level"
+  },
+  {
+    id: 7,
+    title: "Hellasort",
+    description: "Sorting Dominos",
+    technologies: ["TypeScript"],
+    githubLink: "https://github.com/gaurav-bhardwaj29/hellasort",
+    liveLink: "https://hellasort.netlify.app",
+    category: "Low-level"
   }
 ];
 
-const categories = ["All", "AI/ML", "DevOps", "Data", "Automation"];
+const categories = ["All", "AI/ML", "Automation", "Data", "Low-level"];
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
