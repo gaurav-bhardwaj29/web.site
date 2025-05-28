@@ -237,11 +237,32 @@ const Blog = () => {
   };
 
   const renderPostsByCategory = () => {
-    return Object.entries(filteredPosts).map(([category, posts]) => (
-      <CategorySection key={category}>
-        <CategoryHeading>{category}</CategoryHeading>
+    if (selectedTopic === 'All') {
+      return (
         <BlogPostsContainer className="blog-posts-container">
-          {posts.map((post, index) => (
+          {blogPosts.map((post, index) => (
+            <BlogPost 
+              key={post.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              onClick={() => handlePostClick(post.mediumLink)}
+            >
+              <BlogContent>
+                <BlogDate>{post.date}</BlogDate>
+                <BlogTitle>{post.title}</BlogTitle>
+                <BlogExcerpt>{post.excerpt}</BlogExcerpt>
+              </BlogContent>
+            </BlogPost>
+          ))}
+        </BlogPostsContainer>
+      );
+    }
+    return (
+      <CategorySection>
+        <CategoryHeading>{selectedTopic}</CategoryHeading>
+        <BlogPostsContainer className="blog-posts-container">
+          {filteredPosts.map((post, index) => (
             <BlogPost 
               key={post.id}
               initial={{ opacity: 0, y: 20 }}
@@ -258,7 +279,7 @@ const Blog = () => {
           ))}
         </BlogPostsContainer>
       </CategorySection>
-    ));
+    );
   };
 
   return (
@@ -272,7 +293,7 @@ const Blog = () => {
             value={selectedTopic} 
             onChange={(e) => setSelectedTopic(e.target.value)}
           >
-            <option value="All">All Topics</option>
+            <option value="All">tags</option>
             <option value="AI">AI</option>
             <option value="Systems">Systems</option>
           </FilterDropdown>
@@ -283,7 +304,7 @@ const Blog = () => {
         <ComingSoon>
           <h3>More Content Coming Soon</h3>
           <p>
-            I'm currently working on insightful articles about AI engineering, machine learning best practices, and tech industry trends.
+            I'm currently learning about deep-ML, low-level programming, and tech industry trends.
             Check back soon for new content!
           </p>
         </ComingSoon>
