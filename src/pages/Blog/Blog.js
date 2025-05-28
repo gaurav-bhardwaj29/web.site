@@ -57,10 +57,11 @@ const BlogPostsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-height: 60vh;
-  overflow-y: auto;
   padding-right: 0.5rem;
-  
+  @media (max-height: 600px) {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
   /* Custom scrollbar */
   &::-webkit-scrollbar {
     width: 6px;
