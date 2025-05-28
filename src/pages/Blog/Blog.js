@@ -11,15 +11,17 @@ const BlogContainer = styled.div`
   position: relative;
 `;
 
-const SectionTitle = styled.h2`
-  font-size: 1.8rem;
+const SectionTitle = styled.h1`
+  font-size: 2.2rem;
   margin-bottom: 2rem;
   color: var(--accent);
+  text-align: center;
 `;
 
 const FilterContainer = styled.div`
-  margin-bottom: 2rem;
-  position: relative;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
 `;
 
 const FilterDropdown = styled.select`
@@ -36,6 +38,19 @@ const FilterDropdown = styled.select`
     border-color: var(--accent);
     box-shadow: 0 0 5px rgba(60, 145, 230, 0.3);
   }
+`;
+
+const CategorySection = styled.div`
+  margin-bottom: 3rem;
+`;
+
+const CategoryHeading = styled.h2`
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
 `;
 
 const BlogPostsContainer = styled.div`
@@ -104,16 +119,6 @@ const BlogExcerpt = styled.p`
   line-height: 1.4;
 `;
 
-const TopicTag = styled.span`
-  display: inline-block;
-  background: rgba(60, 145, 230, 0.2);
-  color: var(--accent);
-  padding: 0.2rem 0.5rem;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  margin-bottom: 0.5rem;
-`;
-
 const ScrollIndicator = styled.div`
   position: fixed;
   bottom: 2rem;
@@ -180,33 +185,49 @@ const Blog = () => {
     },
     {
       id: 3,
+      title: "Neural Network Optimization Techniques",
+      excerpt: "Advanced strategies for improving neural network performance and reducing computational overhead.",
+      date: "Coming Soon",
+      topic: "AI",
+      mediumLink: "https://medium.com/@yourusername/neural-network-optimization"
+    },
+    {
+      id: 4,
       title: "Socket Programming",
       excerpt: "A Beginner's Guide to Building Real-Time Connections",
       date: "May 22, 2025",
       topic: "Systems",
-      mediumLink: "https://medium.com/@yourusername/socket-programming-guide"
+      mediumLink: "https://medium.com/@gaurav290802/socket-programming-101-cdfd343f3028"
     },
     {
-      id: 4,
+      id: 5,
       title: "Distributed Systems Architecture",
-      excerpt: "Understanding the fundamentals of building scalable distributed systems",
+      excerpt: "Understanding the fundamentals of building scalable distributed systems and microservices.",
       date: "Coming Soon",
       topic: "Systems",
       mediumLink: "https://medium.com/@yourusername/distributed-systems"
     },
     {
-      id: 5,
-      title: "Neural Network Optimization",
-      excerpt: "Advanced techniques for optimizing neural network performance",
+      id: 6,
+      title: "Database Optimization Strategies",
+      excerpt: "Performance tuning techniques for modern database systems and query optimization.",
       date: "Coming Soon",
-      topic: "AI",
-      mediumLink: "https://medium.com/@yourusername/neural-network-optimization"
+      topic: "Systems",
+      mediumLink: "https://medium.com/@yourusername/database-optimization"
     }
   ];
 
   const filteredPosts = selectedTopic === 'All' 
     ? blogPosts 
     : blogPosts.filter(post => post.topic === selectedTopic);
+
+  // Group posts by topic when showing all
+  const groupedPosts = selectedTopic === 'All' 
+    ? {
+        'AI': blogPosts.filter(post => post.topic === 'AI'),
+        'Systems': blogPosts.filter(post => post.topic === 'Systems')
+      }
+    : { [selectedTopic]: filteredPosts };
 
   const handlePostClick = (mediumLink) => {
     window.open(mediumLink, '_blank', 'noopener,noreferrer');
@@ -220,6 +241,31 @@ const Blog = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const renderPostsByCategory = () => {
+    return Object.entries(groupedPosts).map(([category, posts]) => (
+      <CategorySection key={category}>
+        <CategoryHeading>{category}</CategoryHeading>
+        <BlogPostsContainer className="blog-posts-container">
+          {posts.map((post, index) => (
+            <BlogPost 
+              key={post.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              onClick={() => handlePostClick(post.mediumLink)}
+            >
+              <BlogContent>
+                <BlogDate>{post.date}</BlogDate>
+                <BlogTitle>{post.title}</BlogTitle>
+                <BlogExcerpt>{post.excerpt}</BlogExcerpt>
+              </BlogContent>
+            </BlogPost>
+          ))}
+        </BlogPostsContainer>
+      </CategorySection>
+    ));
   };
 
   return (
@@ -239,24 +285,7 @@ const Blog = () => {
           </FilterDropdown>
         </FilterContainer>
         
-        <BlogPostsContainer className="blog-posts-container">
-          {filteredPosts.map((post, index) => (
-            <BlogPost 
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              onClick={() => handlePostClick(post.mediumLink)}
-            >
-              <BlogContent>
-                <TopicTag>{post.topic}</TopicTag>
-                <BlogDate>{post.date}</BlogDate>
-                <BlogTitle>{post.title}</BlogTitle>
-                <BlogExcerpt>{post.excerpt}</BlogExcerpt>
-              </BlogContent>
-            </BlogPost>
-          ))}
-        </BlogPostsContainer>
+        {renderPostsByCategory()}
         
         <ComingSoon>
           <h3>More Content Coming Soon</h3>
