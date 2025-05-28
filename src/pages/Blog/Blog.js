@@ -221,13 +221,6 @@ const Blog = () => {
     ? blogPosts 
     : blogPosts.filter(post => post.topic === selectedTopic);
 
-  // Group posts by topic when showing all
-  const groupedPosts = selectedTopic === 'All' 
-    ? {
-        'AI': blogPosts.filter(post => post.topic === 'AI'),
-        'Systems': blogPosts.filter(post => post.topic === 'Systems')
-      }
-    : { [selectedTopic]: filteredPosts };
 
   const handlePostClick = (mediumLink) => {
     window.open(mediumLink, '_blank', 'noopener,noreferrer');
@@ -244,7 +237,7 @@ const Blog = () => {
   };
 
   const renderPostsByCategory = () => {
-    return Object.entries(groupedPosts).map(([category, posts]) => (
+    return Object.entries(filteredPosts).map(([category, posts]) => (
       <CategorySection key={category}>
         <CategoryHeading>{category}</CategoryHeading>
         <BlogPostsContainer className="blog-posts-container">
