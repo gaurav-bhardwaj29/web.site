@@ -117,6 +117,21 @@ const CertificateDate = styled.div`
   color: var(--text-secondary);
 `;
 
+const CertificateLink = styled.a`
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: inline-block;
+  margin-top: 0.5rem;
+  
+  &:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+`;
+
 const CourseCard = styled(CertificateCard)`
   /* You can customize course cards differently if needed */
 `;
@@ -193,7 +208,7 @@ const About = () => {
           
           <TimelineItem>
             <TimelineTitle>Bachelor of Technology</TimelineTitle>
-            <TimelineSubtitle>IIT Dhanbad</TimelineSubtitle>
+            <TimelineSubtitle>Indian Institute of Technology Dhanbad</TimelineSubtitle>
             <TimelineDate>2021 - 2025</TimelineDate>
             <TimelineContent>
               
@@ -253,9 +268,20 @@ const About = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
             >
-              <CertificateTitle>{cert.title}</CertificateTitle>
+              {cert.link && cert.link !== '#' ? (
+                <CertificateTitle as="a" href={cert.link} target="_blank" rel="noopener noreferrer">
+                  {cert.title}
+                </CertificateTitle>
+              ) : (
+                <CertificateTitle>{cert.title}</CertificateTitle>
+              )}
               <CertificateIssuer>{cert.issuer}</CertificateIssuer>
               <CertificateDate>{cert.date}</CertificateDate>
+              {cert.link && cert.link !== '#' && (
+                <CertificateLink href={cert.link} target="_blank" rel="noopener noreferrer">
+                  View Certificate
+                </CertificateLink>
+              )}
             </CertificateCard>
           ))}
         </Section>

@@ -10,7 +10,7 @@ const PixelatedImageContainer = styled.div`
 
 const Image = styled(motion.img)`
   width: 300px;
-  height: 400px;
+  height: 350px;
   image-rendering: pixelated;
   border-radius: 4px;
   filter: grayscale(100%);
@@ -34,7 +34,7 @@ const PixelatedImage = ({ src, alt }) => {
         alt={alt}
         initial={{ opacity: 0, filter: 'grayscale(100%) blur(10px)' }}
         animate={{ opacity: 1, filter: 'grayscale(100%) blur(0px)' }}
-        transition={{ duration: 2 }}
+        transition={{ duration: 0.7 }}
       />
     </PixelatedImageContainer>
   );

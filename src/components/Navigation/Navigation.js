@@ -157,9 +157,9 @@ const Navigation = () => {
       <TopRow>
         <HomeButton to="/">Home</HomeButton>
         <NavLinks>
-          <NavLink to="/about">More of Me</NavLink>
-          <NavLink to="/projects">Projects</NavLink>
-          <NavLink to="/blog">Blog</NavLink>
+          <NavLink to="/about">btw, hi!</NavLink>
+          <NavLink to="/projects">projects</NavLink>
+          <NavLink to="/blog">blogs</NavLink>
         </NavLinks>
       </TopRow>
       
