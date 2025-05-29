@@ -123,10 +123,10 @@ const CourseCard = styled(CertificateCard)`
 
 const certificates = [
   {
-    title: "Deep Learning Specialization",
+    title: "Generative AI Specialization",
     issuer: "Coursera - DeepLearning.AI",
     date: "October 2023",
-    link: "#"
+    link: "https://coursera.org/share/74498d49442c2b7118e0445676960a46"
   },
   {
     title: "Machine Learning Engineer Nanodegree",
@@ -135,7 +135,7 @@ const certificates = [
     link: "#"
   },
   {
-    title: "AWS Certified Machine Learning",
+    title: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services",
     date: "May 2023",
     link: "#"
@@ -171,13 +171,14 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <SectionTitle>About Me</SectionTitle>
+          <SectionTitle>hi!</SectionTitle>
           <PixelatedImage 
             src="/images/profile.jpg" 
             alt="Gaurav Bhardwaj" 
           />
           <DiffusionText
-            text="I'm Gaurav Bhardwaj, an AI Engineer passionate about developing data-driven solutions and extracting meaningful insights from diverse data sources. With a background in Electrical Engineering and a focus on AI/ML, I specialize in building intelligent systems that solve complex problems."
+            text="Hi, I am Gaurav Bhardwaj.
+            I am passionate about machine learning, artifical intelligence, computer programming, with a knack for mathematics. If you’ve just found your way here, feel free to explore my profiles across the internet."
             fontSize="1.1rem"
             delay={0.3}
           />
@@ -191,11 +192,11 @@ const About = () => {
           <SubHeading>Education</SubHeading>
           
           <TimelineItem>
-            <TimelineTitle>B.Tech in Electrical Engineering</TimelineTitle>
+            <TimelineTitle>Bachelor of Technology</TimelineTitle>
             <TimelineSubtitle>IIT Dhanbad</TimelineSubtitle>
-            <TimelineDate>Dec 2021 - May 2025</TimelineDate>
+            <TimelineDate>2021 - 2025</TimelineDate>
             <TimelineContent>
-              Focused on core electrical engineering with specialization in signal processing and machine learning applications. Participated in various AI research projects and hackathons.
+              
             </TimelineContent>
           </TimelineItem>
         </Section>
@@ -208,11 +209,12 @@ const About = () => {
           <SubHeading>Professional Experience</SubHeading>
           
           <TimelineItem>
-            <TimelineTitle>AI Trainer</TimelineTitle>
+            <TimelineTitle>AI Engineer</TimelineTitle>
             <TimelineSubtitle>Outlier</TimelineSubtitle>
             <TimelineDate>Aug 2024 – Oct 2024</TimelineDate>
             <TimelineContent>
-              Focused on data annotation and model optimization for natural language processing applications. Improved model accuracy by 15% through targeted training data refinement and feature engineering.
+            Developed detailed annotations for 500 data points used in training AI models, identifying key areas for
+            optimization that reduced output inaccuracies by 30%.
             </TimelineContent>
           </TimelineItem>
           
