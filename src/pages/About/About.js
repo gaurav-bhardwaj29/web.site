@@ -111,7 +111,10 @@ const CertificateIssuer = styled.div`
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
 `;
-
+const CertificateCode = styled.div`
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+`;
 const CertificateDate = styled.div`
   font-size: 0.8rem;
   color: var(--text-secondary);
@@ -139,41 +142,41 @@ const CourseCard = styled(CertificateCard)`
 const certificates = [
   {
     title: "Generative AI Specialization",
-    issuer: "Coursera - DeepLearning.AI",
-    date: "October 2023",
+    issuer: "AWS - deeplearning.ai",
+    date: "May 2025",
     link: "https://coursera.org/share/74498d49442c2b7118e0445676960a46"
   },
   {
-    title: "Machine Learning Engineer Nanodegree",
-    issuer: "Udacity",
-    date: "August 2023",
-    link: "#"
-  },
-  {
-    title: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    date: "May 2023",
-    link: "#"
+    title: "Applied Prompt Engineering",
+    issuer: "Udemy",
+    date: "Nov 2024",
+    link: "https://drive.google.com/file/d/1D0RwU-uk2gwMXuTmBBaZyDWrr1lsj1AT/view"
   }
+  // {
+  //   title: "AWS Certified Cloud Practitioner",
+  //   issuer: "Amazon Web Services",
+  //   date: "May 2023",
+  //   link: "#"
+  // }
 ];
 const courses = [
   {
     title: "Natural Language Processing with Deep Learning",
     institution: "Stanford University",
-    date: "Spring 2024",
-    description: "Advanced techniques in NLP including transformers and BERT"
+    code: "CS224n",
+    description: "Advanced NLP techniques including transformers, & post-training"
   },
   {
     title: "Computer Vision and Convolutional Neural Networks",
-    institution: "MIT OpenCourseWare",
-    date: "Fall 2023",
-    description: "Image classification, object detection, and segmentation techniques"
+    institution: "Stanford University",
+    code: "CS231n",
+    description: "Image classification, object detection, and augmentation techniques"
   },
   {
     title: "Reinforcement Learning",
-    institution: "University of California, Berkeley",
-    date: "Winter 2023",
-    description: "Policy optimization, value-based methods, and deep reinforcement learning"
+    institution: "Stanford University",
+    code: "CS234",
+    description: "Policy optimization, offline, online & deep-RL"
   }
 ];
 const About = () => {
@@ -186,7 +189,7 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <SectionTitle>hi!</SectionTitle>
+          <SectionTitle>tl;dr</SectionTitle>
           <PixelatedImage 
             src="/images/profile.jpg" 
             alt="Gaurav Bhardwaj" 
@@ -221,7 +224,7 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <SubHeading>Professional Experience</SubHeading>
+          <SubHeading>Experience</SubHeading>
           
           <TimelineItem>
             <TimelineTitle>AI Engineer</TimelineTitle>
@@ -250,7 +253,7 @@ const About = () => {
             >
               <CertificateTitle>{course.title}</CertificateTitle>
               <CertificateIssuer>{course.institution}</CertificateIssuer>
-              <CertificateDate>{course.date}</CertificateDate>
+              <CertificateCode>{course.code}</CertificateCode>
               <p>{course.description}</p>
             </CourseCard>
           ))}
