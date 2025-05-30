@@ -100,15 +100,13 @@ const InfoContent = styled.div`
 
 const SplineModel = () => {
   const [isLoading, setIsLoading] = useState(true);
-  
-  // Information point data specific to AI Engineer profile
   const infoPoints = [
     {
       id: 'who',
       title: 'Who I Am',
       position: { top: '35%', left: '30%' },
       contentPosition: 'left',
-      text: 'A creator of AI solutions, I specialize in merging machine learning, data science, and software engineering to craft intelligent systems that solve complex problems.'
+      text: 'I am someone driven by curiosity and a passion for understanding how things work.'
     },
     {
       id: 'how',
@@ -122,7 +120,7 @@ const SplineModel = () => {
       title: 'What I Bring',
       position: { top: '75%', left: '50%' },
       contentPosition: 'bottom',
-      text: 'With a foundation in machine learning algorithms, data engineering, and model deployment, I thrive at the intersection of technical expertise and creative problem-solving.'
+      text: 'I am all about blending machine learning, Artifical Intelligence, and coding to create smart tools that tackle real-world problems that actually work. No-hype, just results.'
     }
   ];
   

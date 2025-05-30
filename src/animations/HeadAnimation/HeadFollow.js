@@ -137,7 +137,7 @@ export default function HeadFollow() {
       title: 'Who I Am',
       position: { top: '35%', left: '34%' },
       contentPosition: 'left',
-      text: 'I’m someone driven by curiosity and a passion for understanding how things work.'
+      text: 'I am someone driven by curiosity and a passion for understanding how things work.'
     },
     {
       id: 'how',
@@ -151,7 +151,7 @@ export default function HeadFollow() {
       title: 'What I Bring',
       position: { top: '70%', left: '50%' },
       contentPosition: 'bottom',
-      text: 'I’m all about blending machine learning, Artifical Intelligence, and coding to create smart tools that tackle real-world problems that actually work. No-hype, no-fuss, just results.'
+      text: 'I am all about blending machine learning, Artifical Intelligence, and coding to create smart tools that tackle real-world problems that actually work. No-hype, just results.'
     }
   ];
   

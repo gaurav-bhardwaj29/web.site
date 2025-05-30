@@ -99,7 +99,7 @@ const InteractiveScene = () => {
       id: 'who',
       shortTitle: 'Who I Am', 
       angle: -Math.PI/2,
-      text: 'A creator of AI solutions, I specialize in merging machine learning, data science, and software engineering to craft intelligent systems that solve complex problems.'
+      text: 'I am someone driven by curiosity and a passion for understanding how things work.'
     },
     {
       id: 'how',
@@ -111,7 +111,7 @@ const InteractiveScene = () => {
       id: 'what',
       shortTitle: 'What I Bring',
       angle: -Math.PI/2 + (4*Math.PI/3),
-      text: 'With a foundation in machine learning algorithms, data engineering, and model deployment, I thrive at the intersection of technical expertise and creative problem-solving.'
+      text: 'I am all about blending machine learning, Artifical Intelligence, and coding to create smart tools that tackle real-world problems that actually work. No-hype, just results.'
     }
   ];
   
