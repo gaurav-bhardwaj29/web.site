@@ -111,7 +111,7 @@ const InteractiveScene = () => {
       id: 'what',
       shortTitle: 'What I Bring',
       angle: -Math.PI/2 + (4*Math.PI/3),
-      text: 'I am all about blending machine learning, Artifical Intelligence, and coding to create smart tools that tackle real-world problems that actually work. No-hype, just results.'
+      text: 'I am all about blending machine learning, Artifical Intelligence, and coding to create smart tools that tackle real-world problems and actually work. No-hype, just results.'
     }
   ];
   

@@ -120,7 +120,7 @@ const SplineModel = () => {
       title: 'What I Bring',
       position: { top: '75%', left: '50%' },
       contentPosition: 'bottom',
-      text: 'I am all about blending machine learning, Artifical Intelligence, and coding to create smart tools that tackle real-world problems that actually work. No-hype, just results.'
+      text: 'I am all about blending machine learning, Artifical Intelligence, and coding to create smart tools that tackle real-world problems and actually work. No-hype, just results.'
     }
   ];
   
