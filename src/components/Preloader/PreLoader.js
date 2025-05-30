@@ -22,7 +22,7 @@ const TextContainer = styled.div`
 `;
 
 const greetings = [
-  "Hello", "Hola", "Bonjour", "こんにちは", "नमस्ते",
+  "Hello", "Bonjour", "Hola", "こんにちは", "नमस्ते",
   "你好", "Ciao", "Olá", "Привет", "안녕하세요"
 ];
 
@@ -33,12 +33,10 @@ const Preloader = ({ finishLoading }) => {
     const text = textRef.current;
     let currentIndex = 0;
     
-    // Text scramble effect - faster version
     const scrambleText = () => {
       const chars = "!<>-_\\/[]{}—=+*^?#________";
       let iteration = 0;
       const finalText = greetings[currentIndex];
-      // Shorter duration
       const duration = 10; 
       
       const interval = setInterval(() => {
@@ -54,8 +52,6 @@ const Preloader = ({ finishLoading }) => {
           
         if(iteration >= finalText.length) { 
           clearInterval(interval);
-          
-          // Move to next greeting - faster transitions
           setTimeout(() => {
             currentIndex = (currentIndex + 1) % greetings.length;
             if (currentIndex === 0 && iteration >= finalText.length) {
