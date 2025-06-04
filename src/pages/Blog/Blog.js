@@ -168,30 +168,30 @@ const Blog = () => {
   const [selectedTopic, setSelectedTopic] = useState('All');
   
   const blogPosts = [
-    {
-      id: 1,
-      title: "The Future of AI in Software Engineering",
-      excerpt: "Exploring how artificial intelligence is reshaping the landscape of software development and what it means for future engineers.",
-      date: "Coming Soon",
-      topic: "AI",
-      mediumLink: "https://medium.com/@yourusername/future-of-ai-in-software-engineering"
-    },
-    {
-      id: 2,
-      title: "Building Efficient ML Pipelines",
-      excerpt: "A comprehensive guide to creating scalable and maintainable machine learning pipelines for production environments.",
-      date: "Coming Soon",
-      topic: "AI",
-      mediumLink: "https://medium.com/@yourusername/building-efficient-ml-pipelines"
-    },
-    {
-      id: 3,
-      title: "Neural Network Optimization Techniques",
-      excerpt: "Advanced strategies for improving neural network performance and reducing computational overhead.",
-      date: "Coming Soon",
-      topic: "AI",
-      mediumLink: "https://medium.com/@yourusername/neural-network-optimization"
-    },
+    // {
+    //   id: 1,
+    //   title: "The Future of AI in Software Engineering",
+    //   excerpt: "Exploring how artificial intelligence is reshaping the landscape of software development and what it means for future engineers.",
+    //   date: "Coming Soon",
+    //   topic: "AI",
+    //   mediumLink: "https://medium.com/@yourusername/future-of-ai-in-software-engineering"
+    // },
+    // {
+    //   id: 2,
+    //   title: "Building Efficient ML Pipelines",
+    //   excerpt: "A comprehensive guide to creating scalable and maintainable machine learning pipelines for production environments.",
+    //   date: "Coming Soon",
+    //   topic: "AI",
+    //   mediumLink: "https://medium.com/@yourusername/building-efficient-ml-pipelines"
+    // },
+    // {
+    //   id: 3,
+    //   title: "Neural Network Optimization Techniques",
+    //   excerpt: "Advanced strategies for improving neural network performance and reducing computational overhead.",
+    //   date: "Coming Soon",
+    //   topic: "AI",
+    //   mediumLink: "https://medium.com/@yourusername/neural-network-optimization"
+    // },
     {
       id: 4,
       title: "Socket Programming",
@@ -287,7 +287,7 @@ const Blog = () => {
     <>
       <Navigation />
       <BlogContainer>
-        <SectionTitle>Blog</SectionTitle>
+        <SectionTitle>Blogs</SectionTitle>
         
         <FilterContainer>
           <FilterDropdown 
@@ -303,7 +303,7 @@ const Blog = () => {
         {renderPostsByCategory()}
         
         <ComingSoon>
-          <h3>More Content Coming Soon</h3>
+          <h3>More Coming Soon</h3>
           <p>
             I'm currently learning about deep-ML, low-level programming, and tech industry trends.
             Check back soon for new content!
