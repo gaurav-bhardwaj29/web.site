@@ -202,11 +202,11 @@ const Blog = () => {
     },
     {
       id: 5,
-      title: "Distributed Systems Architecture",
-      excerpt: "Understanding the fundamentals of building scalable distributed systems and microservices.",
-      date: "Coming Soon",
+      title: "Network Protocols",
+      excerpt: "Understanding networks one packet at a time",
+      date: "May 28, 2025",
       topic: "Systems",
-      mediumLink: "https://medium.com/@yourusername/distributed-systems"
+      mediumLink: "https://medium.com/@gaurav290802/networkbits-02e97ee7fc54"
     },
     {
       id: 6,
