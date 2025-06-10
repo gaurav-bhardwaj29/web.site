@@ -203,18 +203,18 @@ const Blog = () => {
     {
       id: 5,
       title: "Network Protocols",
-      excerpt: "Understanding networks one packet at a time",
+      excerpt: "Understating networks one packet at a time",
       date: "May 28, 2025",
       topic: "Systems",
       mediumLink: "https://medium.com/@gaurav290802/networkbits-02e97ee7fc54"
     },
     {
       id: 6,
-      title: "Database Optimization Strategies",
-      excerpt: "Performance tuning techniques for modern database systems and query optimization.",
-      date: "Coming Soon",
+      title: "Serialization",
+      excerpt: "not just any 0x01",
+      date: "June 7, 2025",
       topic: "Systems",
-      mediumLink: "https://medium.com/@yourusername/database-optimization"
+      mediumLink: "https://medium.com/@gaurav290802/serialization-8c100111ca07"
     }
   ];
 
