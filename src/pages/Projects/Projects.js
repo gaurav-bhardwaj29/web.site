@@ -124,7 +124,7 @@ const projects = [
     title: "Sentiment Analyzer",
     description: "Utilized BERT and NLTK to analyze 60,000+ tweets, influencing trading strategies for 25 high-profile stocks.",
     technologies: ["Python", "BERT", "NLTK", "Machine Learning", "Data Analysis"],
-    githubLink: "https://github.com/gaurav-bhardwaj29/sentiment-analyzer",
+    githubLink: "https://github.com/gaurav-bhardwaj29/sentzr",
     liveLink: "#",
     category: "AI/ML"
   },
@@ -139,12 +139,13 @@ const projects = [
   },
   {
     id: 3,
-    title: "Auto Insurance Claim Resolution",
-    description: "Implemented multi-agent workflow reducing manual review time by 40%.",
-    technologies: ["LangChain", "AI Agents", "Process Automation", "Python"],
-    githubLink: "https://github.com/gaurav-bhardwaj29/insurance-claim-resolver",
+      title: "Unslop",
+      description: "Cold email automation agent",
+      technologies: ["OpenAi", "Selenium", "MCP"],
+      link: "https://github.com/gaurav-bhardwaj29/unslop",
+
     liveLink: "#",
-    category: "Automation"
+    category: "AI/ML"
   },
   // {
   //   id: 4,

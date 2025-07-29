@@ -130,11 +130,17 @@ const Home = () => {
       link: "https://github.com/gaurav-bhardwaj29/stem-solver"
     },
     {
-      title: "Auto Insurance Claim Resolution",
-      description: "Implemented multi-agent workflow reducing manual review time by 40%.",
-      technologies: ["LangChain", "AI Agents", "Process Automation", "Python"],
-      link: "https://github.com/gaurav-bhardwaj29/insurance-claim-resolver"
+      title: "Unslop",
+      description: "Cold email automation agent",
+      technologies: ["OpenAi", "Selenium", "MCP"],
+      link: "https://github.com/gaurav-bhardwaj29/unslop"
     }
+    // {
+    //   title: "Auto Insurance Claim Resolution",
+    //   description: "Implemented multi-agent workflow reducing manual review time by 40%.",
+    //   technologies: ["LangChain", "AI Agents", "Process Automation", "Python"],
+    //   link: "https://github.com/gaurav-bhardwaj29/insurance-claim-resolver"
+    // }
   ];
   
   if (loading && isFirstVisit) {
