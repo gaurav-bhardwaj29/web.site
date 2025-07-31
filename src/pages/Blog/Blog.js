@@ -215,6 +215,14 @@ const Blog = () => {
       date: "June 7, 2025",
       topic: "Systems",
       mediumLink: "https://medium.com/@gaurav290802/serialization-8c100111ca07"
+    },
+    {
+      id: 6,
+      title: "LLMs are Data Compressors",
+      excerpt: "To predict is to compress",
+      date: "June 21, 2025",
+      topic: "AI",
+      mediumLink: "https://gaurv.me/blog/txtcrshr/"
     }
   ];
 
